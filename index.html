@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+	<style type="text/css">
+
+	</style>
+	<script type="text/javascript" src="bootstrap/dist/js/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body style="cursor: initial;">
+	<script type="text/javascript">
+		alert("Just click on a shape and mouse down on canvas to make your starting opoint andmouse up to select your desired stopping point");
+	function draw()
+	{
+		if(line)
+		{
+			a=event.x-10;
+			b=event.y-11;
+			pencil = myCanvas.getContext('2d');
+			pencil.moveTo(a,b);
+			pencil.lineTo(c,d);
+			pencil.stroke();
+		}
+
+		if (rect)
+		{
+			a=event.x-10;
+			b=event.y-11;
+			pencil = myCanvas.getContext("2d");
+			pencil.fillStyle = "#FF0000";
+			pencil.fillRect(a,b,c-a,d-b);
+		}
+
+		if (circle)
+		{
+			a=event.x-10;
+			b=event.y-11;
+			pencil = myCanvas.getContext("2d");
+			pencil.beginPath();
+			pencil.arc(a,b,c-a,d-b,2*Math.PI);
+			pencil.stroke();
+		}
+	}
+
+	function draw2()
+	{
+		c=event.x-10;
+		d=event.y-11;
+	}
+
+	
+	</script>
+</body>
+<div class="container-fluid">
+	<div class="row">
+		<canvas class="col-9" id="myCanvas" onmouseup="draw()" onmousedown="draw2()" width="1000" height="600"  style=" border: 3px solid black;"></canvas>
+		<div class="col-3" style="background-color: black; height: 100vh;">
+			<div class="col-12" style="background-color: black; cursor: pointer; height: 30vh; border-bottom: 1px solid white" onclick="line=true; rect=false; circle=false"><img src="line.png" height="50vh" style="margin-top: 60px; margin-left: 100px"><div style="margin-top: 40px; color: white">LINE</div>
+			</div>
+			<div class="col-12" style="background-color: black; cursor: pointer; height: 35vh; border-bottom: 1px solid white" onclick="line=false; rect=false; circle=true"><img src="circle.png" height="70vh" style="margin-top: 60px; margin-left: 100px"><div style="margin-top: 40px; color: white">CIRCLE</div>
+			</div>
+			<div class="col-12" style="background-color: black; height: 35vh; cursor: pointer; border-bottom: 1px solid white" onclick="line=false; rect=true; circle=false"><img src="rect.png" height="70vh" style="margin-top: 60px; margin-left: 100px"><div style="margin-top: 40px; color: white">RECTANGLE</div>
+			</div>
+		</div>
+	</div>
+</div>
+</html>
